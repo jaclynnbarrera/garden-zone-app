@@ -1,22 +1,31 @@
 
-# class Zone
-# #     attr_accessor :vegetables
+class Zone
+    attr_accessor :zone, :veggies
+    
 
-# #     @@all = []
+    @@all = []
 
-# #     def initialize(response)
-# #         @zone = response["zone"]
-# #         @@all << self
-# #     end
+    def initialize(zone,veggies)
+       @zone = zone
+       @veggies = veggies
+       @@all << self
+       binding.pry
+    end
 
-# #     def self.all
-# #         @@all
-# #     end
+    def self.add_veggies
 
-# #     def display_zone
-# #         self.all
-# #     end
+    end
 
-# # end
+    def self.all
+        @@all
+    end
 
+    def display_veggies
+        
+    end
+
+    def display_zone
+    end
+
+end
 

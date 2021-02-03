@@ -1,26 +1,22 @@
 
-class Zone
-    attr_accessor :zone, :temp_range
+# class Zone
+# #     attr_accessor :vegetables
 
-    @@all = []
+# #     @@all = []
 
-    def initialize(response)
-        @zone = response["zone"]
-        @temp_range = response["temperature_range"]
-        @@all << self
-    end
+# #     def initialize(response)
+# #         @zone = response["zone"]
+# #         @@all << self
+# #     end
 
-    def self.all
-        @@all
-    end
+# #     def self.all
+# #         @@all
+# #     end
 
-    def display_zone
-        self.all
-        binding.pry
-    end
+# #     def display_zone
+# #         self.all
+# #     end
 
-end
-
-
+# # end
 
 

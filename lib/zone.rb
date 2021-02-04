@@ -16,7 +16,7 @@ class Zone
 
     def veggie_data(input)
         hash = Scraper.get_veggie_info(input)
-        veggies[input.capitalize] = hash
+        self.veggies[input.capitalize] = hash
     end
 
 end

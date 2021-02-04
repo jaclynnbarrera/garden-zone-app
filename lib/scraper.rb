@@ -12,7 +12,7 @@ class Scraper
       Zone.new(zone,veggies)
   end
 
-  def self.scrape_veggie_page(input)
+  def self.get_veggie_info(input)
     values = []
     veggie_hash = {}
     doc = Nokogiri::HTML(open("https://www.almanac.com/plant/#{input}"))

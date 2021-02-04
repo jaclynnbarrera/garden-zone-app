@@ -19,15 +19,17 @@ class Controller
         sleep 1
         puts "Here are 5 veggies you can grow in your zone."
         sleep 1
-        new_instance.veggies.sample(5)
+        puts instance.keys.sample(5)
         puts "Please type the name of a vegetable you want to learn more about."
         sleep 1
         input = gets.strip
         self.veggie_info(input)
+        binding.pry
     end
 
     def veggie_info(input)
-        
+
+      
         # veggie_hash = Scraper.scrape_veggie_page(input)
         # puts "Type of plant: #{results[:plant_type]}"
         # puts "Sun Exposure: #{results[:sun_exposure]}"

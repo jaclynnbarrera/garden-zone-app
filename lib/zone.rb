@@ -1,6 +1,6 @@
 
 class Zone
-    attr_accessor :zone, :veggies, :veggie_data
+    attr_accessor :zone, :veggies
     
     @@all = []
 

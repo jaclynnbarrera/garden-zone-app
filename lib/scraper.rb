@@ -4,10 +4,10 @@ class Scraper
 
   def self.get_plants_by_zone(zone)
     
-      veggies = []
+      veggies = {}
       doc = Nokogiri::HTML(open("https://www.almanac.com/plants/hardiness/#{zone}"))
       doc.css("div.views-field.views-field-title a").each do |veggie| 
-        veggies << veggie.text
+        veggies[veggie.text] = {}
       end
       Zone.new(zone,veggies)
   end

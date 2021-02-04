@@ -1,31 +1,21 @@
 
 class Zone
-    attr_accessor :zone, :veggies
+    attr_accessor :zone, :veggie_hash
     
-
     @@all = []
 
-    def initialize(zone,veggies)
+    def initialize(zone,veggies={})
        @zone = zone
-       @veggies = veggies
+       @veggies = {}
        @@all << self
-       binding.pry
-    end
-
-    def self.add_veggies
-
     end
 
     def self.all
         @@all
     end
 
-    def display_veggies
-        
-    end
+    def add_veggies(veggie_hash)
 
-    def display_zone
     end
 
 end
-

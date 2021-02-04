@@ -26,9 +26,9 @@ class Controller
     end
 
     def veggie_info(input)
-
-
-        # Scraper.get_info_on_vegetable
+        results = Scraper.scrape_veggie_page(input)
+        puts "Type of plant: #{results[:plant_type]}"
+        puts "Sun Exposure: #{results[:sun_exposure]}"
     end
     
 end

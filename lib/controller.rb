@@ -13,24 +13,27 @@ class Controller
         self.user_selection(zone)
     end
 
-    def user_selection(zone)
+    def user_prompt(zone)
         instance = Scraper.get_plants_by_zone(zone)
         puts "Your gardening zone is #{instance.zone}!"
         sleep 1
-        puts "Here are 5 veggies you can grow in your zone."
+        puts "Here are 5 plants you can grow in your zone."
         sleep 1
         puts instance.veggies.keys.sample(5)
-        puts "Please type the name of a vegetable you want to learn more about."
+        puts "Please type the name of a plant you want to learn more about."
         sleep 1
         input = gets.strip
         self.veggie_info(input,instance)
     end
 
     def veggie_info(input,instance)
-        instance.veggie_data(input)
+        results = instance.veggie_data(input)
+        puts "Type of plant: #{results[:plant_type]}"
+        puts "Sun Exposure: #{results[:sun_exposure]}"
+        self.user_promp_two
+    end
 
-        # veggie_hash = Scraper.scrape_veggie_page(input)
-        # puts "Type of plant: #{results[:plant_type]}"
-        # puts "Sun Exposure: #{results[:sun_exposure]}"
+    def user_prompt_two
+        puts "Would you like to select another plant?"
     end
 end

@@ -3,13 +3,13 @@ require 'pry'
 class Scraper
 
   def self.get_plants_by_zone(zone)
-    new_zone = Zone.new(zone)
+    
       veggies = []
       doc = Nokogiri::HTML(open("https://www.almanac.com/plants/hardiness/#{zone}"))
       doc.css("div.views-field.views-field-title a").each do |veggie| 
         veggies << veggie.text
       end
-      puts veggies.sample(5)
+      Zone.new(zone,veggies)
   end
 
   def self.scrape_veggie_page(input)

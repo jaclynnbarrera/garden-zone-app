@@ -1,12 +1,12 @@
 
 class Zone
-    attr_accessor :zone, :veggie_hash
+    attr_accessor :zone, :veggies, :veggie_data
     
     @@all = []
 
-    def initialize(zone,veggies={})
+    def initialize(zone,veggies)
        @zone = zone
-       @veggies = {}
+       @veggies = veggies
        @@all << self
     end
 
@@ -14,8 +14,8 @@ class Zone
         @@all
     end
 
-    def add_veggies(veggie_hash)
-
+    def veggie_data(input)
+        
     end
 
 end

@@ -14,21 +14,22 @@ class Controller
     end
 
     def user_selection(zone)
-        puts "Your gardening zone is #{zone}!"
+        instance = Scraper.get_plants_by_zone(zone)
+        puts "Your gardening zone is #{instance.zone}!"
         sleep 1
         puts "Here are 5 veggies you can grow in your zone."
         sleep 1
+        new_instance.veggies.sample(5)
         puts "Please type the name of a vegetable you want to learn more about."
         sleep 1
-        Scraper.get_plants_by_zone(zone)
         input = gets.strip
         self.veggie_info(input)
     end
 
     def veggie_info(input)
-        results = Scraper.scrape_veggie_page(input)
-        puts "Type of plant: #{results[:plant_type]}"
-        puts "Sun Exposure: #{results[:sun_exposure]}"
+        
+        # veggie_hash = Scraper.scrape_veggie_page(input)
+        # puts "Type of plant: #{results[:plant_type]}"
+        # puts "Sun Exposure: #{results[:sun_exposure]}"
     end
-    
 end

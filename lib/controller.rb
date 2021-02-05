@@ -9,9 +9,14 @@ class Controller
 
     def get_zip
         input = gets.strip
-        zone = Api.get_zone_by_zip(input).tr('^0-9', '')
-        instance = Scraper.get_plants_by_zone(zone)
-        self.user_prompt(instance)
+        zone = Api.get_zone_by_zip(input)
+        if zone == false
+            puts "Please enter valid zipcode"
+            self.get_zip
+        else
+            instance = Zone.find_by_zone(zone) || Scraper.get_plants_by_zone(zone)
+            self.user_prompt(instance)
+        end 
     end
 
     def user_prompt(instance)
@@ -19,10 +24,11 @@ class Controller
         sleep 1
         puts "Here are 5 plants you can grow in your zone."
         sleep 1
-        puts instance.veggies.keys.sample(5)
-        puts "Please type the name of a plant you want to learn more about."
+        list = instance.veggies.keys.sample(5)
+        list.each.with_index(1) {|item, index| puts "#{index}. #{item}"}
+        puts "Please select the plant you want to learn more about (1-5)."
         sleep 1
-        input = gets.strip
+        input = list[(gets.strip.to_i - 1)]
         self.veggie_info(input,instance)
     end
 
@@ -48,6 +54,7 @@ class Controller
     end
 
     def exit_program
+        binding.pry
         abort("Thanks for using the garden zone app!")
     end
 end

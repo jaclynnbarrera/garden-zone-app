@@ -12,6 +12,9 @@ class Scraper
   end
 
   def self.get_veggie_info(input)
+    if input.match(" ")
+      input = input.gsub(/\s+/, '-')
+    end 
     values = []
     veggie_hash = {}
     doc = Nokogiri::HTML(open("https://www.almanac.com/plant/#{input}"))

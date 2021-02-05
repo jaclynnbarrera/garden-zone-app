@@ -2,7 +2,7 @@
 class Controller
 
     def welcome
-        puts "Welcome to Garden Zones!"
+        puts "Welcome to Garden Zones!".green
         puts "Enter your zipcode to find out what gardening zone you're in"
         self.get_zip
     end
@@ -11,7 +11,7 @@ class Controller
         input = gets.strip
         zone = Api.get_zone_by_zip(input)
         if zone == false
-            puts "Please enter valid zipcode"
+            puts "Please enter valid zipcode".red
             self.get_zip
         else
             instance = Zone.find_by_zone(zone) || Scraper.get_plants_by_zone(zone)
@@ -54,7 +54,6 @@ class Controller
     end
 
     def exit_program
-        binding.pry
         abort("Thanks for using the garden zone app!")
     end
 end

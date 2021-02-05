@@ -9,5 +9,4 @@ class Api
         end 
         response["zone"].tr('^0-9', '')
     end
-
 end

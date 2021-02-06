@@ -42,15 +42,14 @@ class Controller
     end
 
     def plant_info(input,instance)
+        emojis = ["🌱", "👩🏻‍🌾", "🌼", "🌾", "🌵", "🍃", "🪴"]
         results = instance.plant_data(input)
-        puts "Botanical Name: #{results[:botanical_name]} 👩🏻‍🌾".green
-        sleep 1
-        puts "Type of plant: #{results[:plant_type]} 🌱".green
-        sleep 1
-        puts "Sun Exposure: #{results[:sun_exposure]} 🌞".green
-        sleep 1
-        puts "Soil Type: #{results[:soil_type]}".green
-        sleep 1
+        results.each do |key,value|
+            if !results[key].empty?
+            puts "#{key.to_s.gsub('_',' ').split.map(&:capitalize).join(' ')}: #{value} #{emojis.sample}".green
+            sleep 1
+            end
+        end 
         self.user_options(instance)
     end
 

@@ -25,8 +25,6 @@ class Scraper
       doc.css("table.views-table.cols-9").each do |second|
         second.css("tbody").each do |third|
             third.css("tr").each do |fourth|
-                # keys << fourth.css("th").text
-                # values << fourth.css("td").text
                 veggie_hash[fourth.css("th").text.strip.gsub(' ', '_').downcase.to_sym] = fourth.css("td").text.strip
             end 
         end 

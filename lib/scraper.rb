@@ -16,23 +16,21 @@ class Scraper
     end 
     values = []
     veggie_hash = {}
-    doc = Nokogiri::HTML(open("https://www.almanac.com/plant/lilies"))
+    doc = Nokogiri::HTML(open("https://www.almanac.com/plant/#{input}"))
 
       doc.css("table.views-table.cols-9").each do |botanical|
         veggie_hash[:botanical_name] = botanical.css("thead th").last.text.strip
       end
-      doc.css("div.block-content").each do |second|
-        second.css("div.view-content").each do |third|
-          third.css("a").each do |value|
-            values << value.text
-          end
-        end
-      end  
-    veggie_hash[:plant_type] = values[0]
-    values.each do |value|
-      if value.include?("Sun")
-        veggie_hash[:sun_exposure] = value
-      end 
+      
+      doc.css("table.views-table.cols-9").each do |second|
+        second.css("tbody").each do |third|
+            third.css("tr").each do |fourth|
+                # keys << fourth.css("th").text
+                # values << fourth.css("td").text
+                veggie_hash[fourth.css("th").text.strip.gsub(' ', '_').downcase.to_sym] = fourth.css("td").text.strip
+            end 
+        end 
+      
     end 
     veggie_hash
   end 

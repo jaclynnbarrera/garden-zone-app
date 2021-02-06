@@ -12,7 +12,7 @@ class Controller
         zip = gets.strip
         zone = Zone.find_by_zip(zip) || Api.get_zone_by_zip(zip)
         if zone == false
-            puts "Please enter valid zipcode!".colorize(:green)
+            puts "Please enter valid zipcode!".red
             self.get_zip
         elsif 
             if zone.class == String
@@ -48,6 +48,8 @@ class Controller
         puts "Type of plant: #{results[:plant_type]} 🌱".green
         sleep 1
         puts "Sun Exposure: #{results[:sun_exposure]} 🌞".green
+        sleep 1
+        puts "Soil Type: #{results[:soil_type]}".green
         sleep 1
         self.user_options(instance)
     end

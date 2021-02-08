@@ -1,8 +1,8 @@
 
 class Controller
-   
+
     def welcome 
-        puts "🪴🪴 Welcome to Garden Zones!🪴🪴".green
+        puts "🪴🪴🪴🪴 Welcome to Garden Zones!🪴🪴🪴🪴".green
         sleep 1
         puts "Enter your zipcode to find out what gardening zone you're in."
         self.get_zip
@@ -64,11 +64,10 @@ class Controller
     end
 
     def user_options(instance)
-        puts "To see information on another plant in your zone, enter 1."
-        puts "To enter different zip code, enter 2."
-        puts "To exit the program, please enter 3." 
+        puts "Enter '1', to see information on another plant in your zone."
+        puts "Enter '2', to enter a different zip code."
+        puts "Enter '3' to close this application."
         input = gets.chomp
-
         if input == "1"
             self.user_prompt(instance)
         elsif input == "2"

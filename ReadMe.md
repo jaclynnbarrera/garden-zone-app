@@ -4,5 +4,5 @@ Plant Hardiness Zones is the standard by which gardeners and growers can determi
 
 ### Installing
 
-After copying the repo link, navigate into the garden-zone-app directory, run bundle install and ruby bin/run.
+After copying the repo link, navigate into the garden-zone-app directory, run `bundle install` `ruby bin/run`.
 

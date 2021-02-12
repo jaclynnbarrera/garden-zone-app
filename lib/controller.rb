@@ -14,8 +14,8 @@ class Controller
         if zone == false 
             puts "Please enter valid zipcode!".red
             self.get_zip
-        end 
-        instance = Scraper.get_plants_by_zone(zone)
+        end
+        instance = Zone.find_by_zone(zone) || Scraper.get_plants_by_zone(zone)
         user_prompt(instance)
     end
 
@@ -42,8 +42,7 @@ class Controller
     end
 
     def plant_info(input,instance)
-        emojis = ["🌱", "👩🏻‍🌾", "🌼", "🌾", "🌵", "🍃", "🪴", "🌞", "🌻"]
-        
+        emojis = ["🌱", "👩🏻‍🌾", "🌼", "🌾", "🌵", "🍃", "🪴", "🌞", "🌻"]   
         results = instance.plant_data(input)
         results.each do |key,value|
             if !results[key].empty?

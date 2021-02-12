@@ -7,6 +7,6 @@ class Api
         if response.has_key?("Error")
           return false
         end 
-        response["zone"].tr('^0-9', '')
+        response["zone"].gsub(/[^0-9]/, '')
     end
 end

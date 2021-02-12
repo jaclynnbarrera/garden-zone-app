@@ -10,23 +10,13 @@ class Controller
 
     def get_zip
         zip = gets.strip
-        zone = Zone.find_by_zip(zip) || Api.get_zone_by_zip(zip)
-        if zone == false
+        zone = Api.get_zone_by_zip(zip)      
+        if zone == false 
             puts "Please enter valid zipcode!".red
             self.get_zip
-        elsif 
-            if zone.class == String
-                instance = Zone.find_by_zone(zone)
-                if instance 
-                    instance.add_zip(zip)
-                else
-                instance = Scraper.get_plants_by_zone(zone,zip)
-                end
-                self.user_prompt(instance)
-            else 
-                self.user_prompt(zone)
-            end 
         end 
+        instance = Scraper.get_plants_by_zone(zone)
+        user_prompt(instance)
     end
 
     def user_prompt(instance)
@@ -53,6 +43,7 @@ class Controller
 
     def plant_info(input,instance)
         emojis = ["🌱", "👩🏻‍🌾", "🌼", "🌾", "🌵", "🍃", "🪴", "🌞", "🌻"]
+        
         results = instance.plant_data(input)
         results.each do |key,value|
             if !results[key].empty?

@@ -1,13 +1,12 @@
 
 class Zone
-    attr_accessor :zone, :plants, :zip
+    attr_accessor :zone, :plants
 
     @@all = []
 
-    def initialize(zone,plants,zip)
+    def initialize(zone,plants)
        @zone = zone
        @plants = plants
-       @zip = [zip]
        @@all << self
     end
 
@@ -21,23 +20,11 @@ class Zone
         end 
     end
 
-    def self.find_by_zip(zip)
-        self.all.find do |zone|
-            zone.zip.include?(zip)
-        end
-    end
-
-    def add_zip(zip)
-        self.zip << zip
-    end
-    
     def plant_data(input)
         if self.plants[input].empty?
-            hash = Scraper.get_plant_info(input)
-            self.plants[input.capitalize] = hash
+            self.plants[input] = Scraper.get_plant_info(input)
         else
             self.plants[input]
         end
     end
-
 end

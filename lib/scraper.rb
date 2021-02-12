@@ -1,20 +1,19 @@
 
 class Scraper
 
-  def self.get_plants_by_zone(zone,zip)
+  def self.get_plants_by_zone(zone)
       plants = {}
       doc = Nokogiri::HTML(open("https://www.almanac.com/plants/hardiness/#{zone}"))
       doc.css("div.views-field.views-field-title a").each do |plant| 
         plants[plant.text] = {}
       end
-      Zone.new(zone,plants,zip)
+      Zone.new(zone,plants)
   end
 
   def self.get_plant_info(input)
     if input.match(" ")
       input = input.gsub(/\s+/, '-')
     end 
-    values = []
     veggie_hash = {}
     doc = Nokogiri::HTML(open("https://www.almanac.com/plant/#{input}"))
 
@@ -28,7 +27,6 @@ class Scraper
                 veggie_hash[fourth.css("th").text.strip.gsub(' ', '_').downcase.to_sym] = fourth.css("td").text.strip
             end 
         end 
-      
     end 
     veggie_hash
   end 

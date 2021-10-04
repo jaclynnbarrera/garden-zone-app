@@ -1,6 +1,6 @@
 # Garden Zones
 
-Plant Hardiness Zones is the standard by which gardeners and growers can determine which plants are most likely to thrive at a location. Garden Zones is a command line interface application that helps you identify and learn about different plants and vegetables based on your gardening zone.
+Plant Hardiness Zones is the standard by which gardeners and growers can determine which plants are most likely to thrive at a location. Garden Zones is a command line interface application that helps you identify and learn about different plants and vegetables based on your gardening zone. Using [Frostline API](https://github.com/waldoj/frostline) and web scraping from Farmer's Almanac.
 
 ### Installing
 

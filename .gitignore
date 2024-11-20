@@ -1,0 +1,23 @@
+# Ruby
+.byebug_history
+.gem/
+*.gem
+*.rbc
+log/*
+tmp/
+
+# Environment
+.env
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# System files
+Thumbs.db
+
+# Database
+/db/*.sqlite3

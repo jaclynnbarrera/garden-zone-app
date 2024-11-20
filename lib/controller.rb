@@ -15,12 +15,14 @@ class Controller
             puts "Please enter valid zipcode!".red
             self.get_zip
         end
+        
+        puts "You are in zone #{zone}! Looking up plants you can grow...".green
+
         instance = Zone.find_by_zone(zone) || Scraper.get_plants_by_zone(zone)
         user_prompt(instance)
     end
 
     def user_prompt(instance)
-        puts "You are in gardening zone #{instance.zone}!"
         sleep 1
         puts "Here are 5 plants you can grow in your zone."
         sleep 1

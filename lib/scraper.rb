@@ -3,7 +3,8 @@ class Scraper
 
   def self.get_plants_by_zone(zone)
       plants = {}
-      doc = Nokogiri::HTML(open("https://www.almanac.com/plants/hardiness/#{zone}"))
+      url = "https://www.almanac.com/plants/hardiness/#{zone}"
+      doc = Nokogiri::HTML(URI.open(url))
       doc.css("div.views-field.views-field-title a").each do |plant| 
         plants[plant.text] = {}
       end

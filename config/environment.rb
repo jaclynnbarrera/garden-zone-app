@@ -3,6 +3,7 @@ require 'httparty'
 require 'nokogiri'
 require 'open-uri'
 require 'colorize'
+require 'byebug'
 
 require_relative('../lib/api')
 require_relative('../lib/controller')
